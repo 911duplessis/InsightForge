@@ -1,11 +1,9 @@
 import { NextResponse } from 'next/server'
+import { SESSION_COOKIE_NAME, BUSINESS_COOKIE_NAME } from '@/lib/auth'
 
 export async function POST() {
   const response = NextResponse.json({ success: true })
-  response.cookies.set('command_auth', '', {
-    httpOnly: true,
-    maxAge: 0,
-    path: '/',
-  })
+  response.cookies.set(SESSION_COOKIE_NAME, '', { httpOnly: true, maxAge: 0, path: '/' })
+  response.cookies.set(BUSINESS_COOKIE_NAME, '', { httpOnly: true, maxAge: 0, path: '/' })
   return response
 }

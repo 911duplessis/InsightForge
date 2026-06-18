@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 
 export default function CommandLoginPage() {
   const router = useRouter()
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -18,14 +19,14 @@ export default function CommandLoginPage() {
       const res = await fetch('/api/command/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ email, password }),
       })
 
       if (res.ok) {
         router.push('/command')
         router.refresh()
       } else {
-        setError('Incorrect password. Access denied.')
+        setError('Invalid email or password.')
       }
     } catch {
       setError('Login failed. Please try again.')
@@ -48,14 +49,24 @@ export default function CommandLoginPage() {
         <form onSubmit={handleLogin} className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
           <div className="flex flex-col gap-4">
             <div>
-              <label className="text-slate-400 text-sm font-medium block mb-2">Access Password</label>
+              <label className="text-slate-400 text-sm font-medium block mb-2">Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@insightforge.com"
+                className="w-full bg-slate-800 border border-slate-700 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forge-500 focus:border-transparent"
+                autoFocus
+              />
+            </div>
+            <div>
+              <label className="text-slate-400 text-sm font-medium block mb-2">Password</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your consultant password"
+                placeholder="Enter your password"
                 className="w-full bg-slate-800 border border-slate-700 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forge-500 focus:border-transparent"
-                autoFocus
               />
             </div>
 
@@ -67,7 +78,7 @@ export default function CommandLoginPage() {
 
             <button
               type="submit"
-              disabled={loading || !password}
+              disabled={loading || !email || !password}
               className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 disabled:opacity-50 text-white font-bold py-3 rounded-xl transition-all"
             >
               {loading ? 'Authenticating...' : 'Access Command Center →'}
@@ -76,7 +87,7 @@ export default function CommandLoginPage() {
         </form>
 
         <p className="text-center text-slate-600 text-xs mt-6">
-          InsightForge Discover™ · Consultant Portal
+          InsightForge COMMAND™ · Consultant Portal
         </p>
       </div>
     </div>
