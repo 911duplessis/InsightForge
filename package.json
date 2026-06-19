@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "seed:primeturf": "node --env-file=.env.local --import tsx scripts/seed-primeturf.ts",
+    "seed:readyrooted": "node --env-file=.env.local --import tsx scripts/seed-readyrooted.ts",
     "seed:consultant": "node --env-file=.env.local --import tsx scripts/seed-consultant.ts"
   },
   "dependencies": {
