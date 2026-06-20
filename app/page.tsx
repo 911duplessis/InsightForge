@@ -40,7 +40,7 @@ export default function LandingPage() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link
-            href="/discover"
+            href="/discover-lite"
             className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all transform hover:scale-105 shadow-2xl shadow-gold-900/30"
           >
             Start Your Discovery Session →
@@ -138,7 +138,7 @@ export default function LandingPage() {
             <span className="gold-gradient-text">Business Breakthrough?</span>
           </h2>
           <Link
-            href="/discover"
+            href="/discover-lite"
             className="inline-block bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all transform hover:scale-105 shadow-2xl shadow-gold-900/30"
           >
             Begin Your Discovery Session →

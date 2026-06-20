@@ -100,13 +100,15 @@ export default function CommandDashboard({
                 </option>
               ))}
             </select>
-            <Link
-              href="/discover"
-              target="_blank"
-              className="text-slate-400 hover:text-white text-sm transition-colors"
-            >
-              ↗ New Engagement
-            </Link>
+            {activeBusiness && (
+              <Link
+                href={`/discover?business=${activeBusiness.slug}`}
+                target="_blank"
+                className="text-slate-400 hover:text-white text-sm transition-colors"
+              >
+                ↗ New Engagement
+              </Link>
+            )}
             <button onClick={handleLogout} className="text-slate-400 hover:text-white text-sm transition-colors">
               Logout
             </button>
