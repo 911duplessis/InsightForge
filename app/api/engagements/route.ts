@@ -3,6 +3,7 @@ import { supabaseAdmin } from '@/lib/supabase'
 import { STAGE_SEQUENCE, ASQ_KEYS } from '@/types/vdos'
 import type { BusinessAgnosticIntake } from '@/types/vdos'
 import { runStage } from '@/lib/vdos/engine'
+import { checkRateLimit, clientIp } from '@/lib/rateLimit'
 
 interface CreateEngagementBody {
   business_id: string
@@ -11,6 +12,14 @@ interface CreateEngagementBody {
 
 export async function POST(req: NextRequest) {
   try {
+    const rl = await checkRateLimit(`engagements:${clientIp(req)}`, 15, 600)
+    if (!rl.ok) {
+      return NextResponse.json(
+        { success: false, error: 'Too many requests. Please try again shortly.' },
+        { status: 429, headers: { 'Retry-After': String(rl.retryAfter) } }
+      )
+    }
+
     const body: CreateEngagementBody = await req.json()
     const { business_id, intake } = body
 

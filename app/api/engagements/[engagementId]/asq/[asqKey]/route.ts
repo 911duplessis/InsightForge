@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { runAsq } from '@/lib/vdos/engine'
+import { checkRateLimit, clientIp } from '@/lib/rateLimit'
 import type { AsqKey, Asq4Input } from '@/types/vdos'
 
 export async function GET(
@@ -27,6 +28,15 @@ export async function POST(
   { params }: { params: Promise<{ engagementId: string; asqKey: string }> }
 ) {
   const { engagementId, asqKey } = await params
+
+  const rl = await checkRateLimit(`asq-submit:${clientIp(req)}`, 60, 600)
+  if (!rl.ok) {
+    return NextResponse.json(
+      { success: false, error: 'Too many requests. Please try again shortly.' },
+      { status: 429, headers: { 'Retry-After': String(rl.retryAfter) } }
+    )
+  }
+
   const rawInput = await req.json()
 
   try {
