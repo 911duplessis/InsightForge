@@ -18,6 +18,24 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'business_id and intake are required' }, { status: 400 })
     }
 
+    if (!intake.contact?.email) {
+      return NextResponse.json({ success: false, error: 'A contact email is required' }, { status: 400 })
+    }
+
+    // Only allow engagements against a real, active business. Without this the
+    // endpoint would accept any business_id from the request body and spin up a
+    // stage run (which calls the LLM) against arbitrary or inactive tenants.
+    const { data: business } = await supabaseAdmin
+      .from('businesses')
+      .select('id')
+      .eq('id', business_id)
+      .eq('status', 'active')
+      .maybeSingle()
+
+    if (!business) {
+      return NextResponse.json({ success: false, error: 'Business not found or inactive' }, { status: 404 })
+    }
+
     // Upsert the founder/contact as a client record
     const { data: existingClient } = await supabaseAdmin
       .from('clients')
