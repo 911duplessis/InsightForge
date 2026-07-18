@@ -1,10 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { runForgeAnalysis } from '@/lib/claude'
+import { checkRateLimit, clientIp } from '@/lib/rateLimit'
 import type { DiscoveryFormData, ApiResponse, CreateSessionResponse } from '@/types'
 
 export async function POST(req: NextRequest) {
   try {
+    const rl = await checkRateLimit(`sessions:${clientIp(req)}`, 15, 600)
+    if (!rl.ok) {
+      return NextResponse.json(
+        { success: false, error: 'Too many requests. Please try again shortly.' },
+        { status: 429, headers: { 'Retry-After': String(rl.retryAfter) } }
+      )
+    }
+
     const formData: DiscoveryFormData = await req.json()
 
     // 1. Upsert client (by email)
