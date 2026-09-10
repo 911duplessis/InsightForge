@@ -427,5 +427,16 @@ drop policy if exists "service_role_all_rate_limit_hits" on rate_limit_hits;
 create policy "service_role_all_rate_limit_hits" on rate_limit_hits
   for all using (auth.role() = 'service_role');
 
+-- ============================================================
+-- supabase/migrations/0006_add_missing_fk_indexes.sql
+-- ============================================================
+-- Covering indexes for foreign keys get_advisors flagged as unindexed.
+create index if not exists idx_asq4_deals_business on asq4_deals(business_id);
+create index if not exists idx_asq_instruments_business on asq_instruments(business_id);
+create index if not exists idx_consultant_business_access_business on consultant_business_access(business_id);
+create index if not exists idx_vdos_blueprints_business on vdos_blueprints(business_id);
+create index if not exists idx_vdos_engagements_client on vdos_engagements(client_id);
+create index if not exists idx_vdos_opportunities_business on vdos_opportunities(business_id);
+
 -- Make PostgREST expose the new tables/columns immediately.
 notify pgrst, 'reload schema';
