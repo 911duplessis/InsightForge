@@ -87,13 +87,15 @@ create index if not exists idx_opportunities_session_id on opportunities(session
 create index if not exists idx_blueprints_session_id on blueprints(session_id);
 
 -- Updated_at trigger function
+-- search_path pinned per migrations/0004_fix_function_search_path.sql
 create or replace function update_updated_at_column()
 returns trigger as $$
 begin
   new.updated_at = now();
   return new;
 end;
-$$ language plpgsql;
+$$ language plpgsql
+set search_path = '';
 
 -- Apply updated_at triggers
 drop trigger if exists update_clients_updated_at on clients;
