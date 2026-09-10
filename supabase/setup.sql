@@ -438,5 +438,82 @@ create index if not exists idx_vdos_blueprints_business on vdos_blueprints(busin
 create index if not exists idx_vdos_engagements_client on vdos_engagements(client_id);
 create index if not exists idx_vdos_opportunities_business on vdos_opportunities(business_id);
 
+-- ============================================================
+-- supabase/migrations/0007_fix_auth_rls_initplan.sql
+-- ============================================================
+-- Wraps every policy's auth.role()/auth.jwt() call as (select auth.<fn>())
+-- so Postgres evaluates it once per query instead of once per row.
+drop policy if exists "service_role_all_clients" on clients;
+create policy "service_role_all_clients" on clients
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_sessions" on discovery_sessions;
+create policy "service_role_all_sessions" on discovery_sessions
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_answers" on discovery_answers;
+create policy "service_role_all_answers" on discovery_answers
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_insights" on insights;
+create policy "service_role_all_insights" on insights
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_opportunities" on opportunities;
+create policy "service_role_all_opportunities" on opportunities
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_blueprints" on blueprints;
+create policy "service_role_all_blueprints" on blueprints
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_businesses" on businesses;
+create policy "service_role_all_businesses" on businesses
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_consultants" on consultants;
+create policy "service_role_all_consultants" on consultants
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_consultant_business_access" on consultant_business_access;
+create policy "service_role_all_consultant_business_access" on consultant_business_access
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_engagements" on vdos_engagements;
+create policy "service_role_all_engagements" on vdos_engagements
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_stages" on vdos_stages;
+create policy "service_role_all_stages" on vdos_stages
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_asq_instruments" on asq_instruments;
+create policy "service_role_all_asq_instruments" on asq_instruments
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_asq4_deals" on asq4_deals;
+create policy "service_role_all_asq4_deals" on asq4_deals
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_vdos_opportunities" on vdos_opportunities;
+create policy "service_role_all_vdos_opportunities" on vdos_opportunities
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "service_role_all_vdos_blueprints" on vdos_blueprints;
+create policy "service_role_all_vdos_blueprints" on vdos_blueprints
+  for all using ((select auth.role()) = 'service_role');
+
+drop policy if exists "business_scoped_engagements" on vdos_engagements;
+create policy "business_scoped_engagements" on vdos_engagements
+  for select using (business_id::text = ((select auth.jwt()) ->> 'business_id'));
+
+drop policy if exists "business_scoped_stages" on vdos_stages;
+create policy "business_scoped_stages" on vdos_stages
+  for select using (business_id::text = ((select auth.jwt()) ->> 'business_id'));
+
+drop policy if exists "service_role_all_rate_limit_hits" on rate_limit_hits;
+create policy "service_role_all_rate_limit_hits" on rate_limit_hits
+  for all using ((select auth.role()) = 'service_role');
+
 -- Make PostgREST expose the new tables/columns immediately.
 notify pgrst, 'reload schema';
