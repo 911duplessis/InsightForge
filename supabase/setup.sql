@@ -416,5 +416,16 @@ create table if not exists rate_limit_hits (
 create index if not exists idx_rate_limit_hits_bucket_time
   on rate_limit_hits (bucket, created_at desc);
 
+-- ============================================================
+-- supabase/migrations/0005_rate_limit_hits_rls.sql
+-- ============================================================
+-- rate_limit_hits was exposed to PostgREST with no RLS. Locking it to
+-- service_role-only costs nothing — lib/rateLimit.ts only ever uses supabaseAdmin.
+alter table rate_limit_hits enable row level security;
+
+drop policy if exists "service_role_all_rate_limit_hits" on rate_limit_hits;
+create policy "service_role_all_rate_limit_hits" on rate_limit_hits
+  for all using (auth.role() = 'service_role');
+
 -- Make PostgREST expose the new tables/columns immediately.
 notify pgrst, 'reload schema';
