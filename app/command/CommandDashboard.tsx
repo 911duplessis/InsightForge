@@ -42,6 +42,7 @@ interface CommandDashboardProps {
   activeBusinessId: string | null
   engagements: VdosEngagementRow[]
   forgeLiteSessions: ForgeLiteSessionRow[]
+  blueprintEngagementIds: string[]
   isAdmin: boolean
 }
 
@@ -50,6 +51,7 @@ export default function CommandDashboard({
   activeBusinessId,
   engagements,
   forgeLiteSessions,
+  blueprintEngagementIds,
   isAdmin,
 }: CommandDashboardProps) {
   const router = useRouter()
@@ -194,7 +196,7 @@ export default function CommandDashboard({
                                   >
                                     Open
                                   </Link>
-                                  {e.status === 'completed' && (
+                                  {blueprintEngagementIds.includes(e.id) && (
                                     <Link
                                       href={`/vdos-blueprint/${e.id}`}
                                       target="_blank"
