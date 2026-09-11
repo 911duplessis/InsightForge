@@ -55,6 +55,7 @@ export default function LandingPage() {
           <Link href="/process" className="text-slate-400 hover:text-white text-sm transition-colors">Process</Link>
           <Link href="/projects" className="text-slate-400 hover:text-white text-sm transition-colors">Projects</Link>
           <Link href="/partners" className="text-slate-400 hover:text-white text-sm transition-colors">Partners</Link>
+          <Link href="/policies" className="text-slate-400 hover:text-white text-sm transition-colors">Policies</Link>
           <Link href="/contact" className="text-slate-400 hover:text-white text-sm transition-colors">Contact</Link>
           <Link href="/command" className="text-slate-400 hover:text-white text-sm transition-colors">
             Consultant Login →
