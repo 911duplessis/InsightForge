@@ -1,5 +1,44 @@
 import Link from 'next/link'
 
+const CAPABILITIES = [
+  'Web & mobile development',
+  'AI strategy & automation',
+  'Cybersecurity & networking',
+  'Cloud & infrastructure',
+  'SEO & market positioning',
+  'Corporate identity & branding',
+]
+
+const PROCESS = [
+  {
+    step: 'Discover',
+    desc: 'Deep analysis of the business, market, customers, competitors, opportunities, and the assumptions currently going unquestioned.',
+  },
+  {
+    step: 'Forge',
+    desc: 'The Master Blueprint: positioning, brand identity, technology roadmap, growth strategy, competitive advantage, and an implementation plan with real numbers attached.',
+  },
+  {
+    step: 'Build',
+    desc: 'Development starts only once the Blueprint is agreed — websites, applications, automation, AI systems, and digital infrastructure.',
+  },
+  {
+    step: 'Scale',
+    desc: 'SEO, analytics, growth systems, and market expansion, run as a retained relationship — not a one-time handoff.',
+  },
+]
+
+const PROJECTS = [
+  {
+    name: 'PrimeTurf',
+    desc: 'Post-migration SEO recovery and go-to-market rebuild for a Gauteng & Cape Town artificial turf installer.',
+  },
+  {
+    name: 'Ready & Rooted',
+    desc: "A full VDOS Discovery engagement for a New Zealand children's emotional-readiness programme.",
+  },
+]
+
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-forge-950 via-forge-900 to-forge-800">
@@ -11,51 +50,113 @@ export default function LandingPage() {
           </div>
           <span className="text-white font-bold text-xl tracking-tight">InsightForge</span>
         </div>
-        <Link
-          href="/command"
-          className="text-slate-400 hover:text-white text-sm transition-colors"
-        >
-          Consultant Login →
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link href="/about" className="text-slate-400 hover:text-white text-sm transition-colors">About</Link>
+          <Link href="/team" className="text-slate-400 hover:text-white text-sm transition-colors">Team</Link>
+          <Link href="/process" className="text-slate-400 hover:text-white text-sm transition-colors">Process</Link>
+          <Link href="/projects" className="text-slate-400 hover:text-white text-sm transition-colors">Projects</Link>
+          <Link href="/partners" className="text-slate-400 hover:text-white text-sm transition-colors">Partners</Link>
+          <Link href="/policies" className="text-slate-400 hover:text-white text-sm transition-colors">Policies</Link>
+          <Link href="/contact" className="text-slate-400 hover:text-white text-sm transition-colors">Contact</Link>
+          <Link href="/command" className="text-slate-400 hover:text-white text-sm transition-colors">
+            Consultant Login →
+          </Link>
+        </div>
       </nav>
 
       {/* Hero */}
-      <div className="max-w-7xl mx-auto px-8 pt-20 pb-32 text-center">
+      <div className="max-w-7xl mx-auto px-8 pt-20 pb-24 text-center">
         <div className="inline-flex items-center gap-2 bg-forge-800/50 border border-forge-700 rounded-full px-4 py-2 mb-8">
           <div className="w-2 h-2 bg-gold-400 rounded-full animate-pulse" />
-          <span className="text-gold-300 text-sm font-medium">Powered by the FORGE Framework™</span>
+          <span className="text-gold-300 text-sm font-medium">Strategic Intelligence &amp; Execution Ecosystem</span>
         </div>
 
         <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight">
-          Discover What Your
+          Where Insights
           <br />
-          <span className="gold-gradient-text">Business Is Worth</span>
+          <span className="gold-gradient-text">Become Impact.</span>
         </h1>
 
-        <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-          Complete our 10-minute business discovery session and receive an executive-grade
-          strategic blueprint — revealing hidden revenue, untapped opportunities, and
-          your 90-day growth roadmap.
+        <p className="text-xl text-slate-300 mb-4 max-w-2xl mx-auto leading-relaxed">
+          Most businesses don&apos;t fail for lack of ideas. They fail for lack of clarity —
+          about their market, their customers, and what to build next. InsightForge finds
+          that clarity first, with evidence, then builds what it proves out.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
           <Link
-            href="/discover-lite"
+            href="/contact"
             className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all transform hover:scale-105 shadow-2xl shadow-gold-900/30"
           >
-            Start Your Discovery Session →
+            Start a Discovery →
           </Link>
-          <p className="text-slate-400 text-sm">Free · 10 minutes · No commitment</p>
+          <p className="text-slate-400 text-sm">No commitment to build. Evidence before a pitch.</p>
         </div>
       </div>
 
-      {/* FORGE Framework */}
+      {/* Trust indicators */}
+      <div className="border-y border-forge-800 bg-forge-950/30">
+        <div className="max-w-7xl mx-auto px-8 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <TrustStat value="11-stage" label="gated methodology, VDOS" />
+          <TrustStat value="6" label="evidentiary ASQ instruments" />
+          <TrustStat value="10+" label="disciplines, one network" />
+          <TrustStat value="0" label="black-box recommendations" />
+        </div>
+      </div>
+
+      {/* Featured projects — client proof leads, ahead of internal methodology */}
+      <div className="py-24">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-white mb-4">Real clients. Real numbers.</h2>
+            <p className="text-slate-400 max-w-xl mx-auto">
+              Before anything about how we work — here&apos;s who we&apos;ve done it for.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {PROJECTS.map((p) => (
+              <div key={p.name} className="bg-forge-900/40 border border-forge-700/50 rounded-xl p-8">
+                <h3 className="text-white font-bold text-xl mb-3">{p.name}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link href="/projects" className="text-gold-400 hover:text-gold-300 text-sm font-medium transition-colors">
+              See all projects →
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Global capability */}
+      <div className="py-24">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-bold text-white mb-4">One network. Every discipline a serious business needs.</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              Held natively inside one network of specialists across multiple countries — not
+              stitched together from subcontractors after the sale.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {CAPABILITIES.map((c) => (
+              <div key={c} className="bg-forge-900/40 border border-forge-700/50 rounded-xl px-5 py-4 text-slate-200 text-sm font-medium">
+                {c}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* FORGE Framework (analytical method) */}
       <div className="bg-forge-950/50 border-t border-forge-800 py-24">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-white mb-4">The FORGE Framework™</h2>
             <p className="text-slate-400 max-w-xl mx-auto">
-              Our proprietary 5-stage business intelligence methodology used by top consulting firms
+              The analytical method applied at every Discovery — run once in FORGE Lite,
+              or eleven times, at depth, inside a full VDOS engagement.
             </p>
           </div>
 
@@ -79,50 +180,21 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* What you get */}
+      {/* Discover -> Forge -> Build -> Scale */}
       <div className="py-24">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-white mb-4">Your Strategic Blueprint Includes</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Discover → Forge → Build → Scale</h2>
+            <p className="text-slate-400 max-w-xl mx-auto">How that method turns into an engagement, end to end.</p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: '📊',
-                title: 'Revenue Leak Analysis',
-                desc: 'Identify exactly where money is walking out the door with specific, actionable fixes',
-              },
-              {
-                icon: '🎯',
-                title: 'Opportunity Matrix',
-                desc: 'Ranked opportunities by revenue potential, difficulty, and time-to-value',
-              },
-              {
-                icon: '📈',
-                title: '90-Day Growth Roadmap',
-                desc: 'Phased action plan with week-by-week milestones and accountability metrics',
-              },
-              {
-                icon: '⚡',
-                title: 'Quick Win Playbook',
-                desc: '5+ immediate actions you can take this week to start generating results',
-              },
-              {
-                icon: '🔍',
-                title: 'SWOT Analysis',
-                desc: 'Deep competitive intelligence and market positioning recommendations',
-              },
-              {
-                icon: '📋',
-                title: 'KPI Dashboard',
-                desc: 'Measurable targets across revenue, growth, and operational efficiency',
-              },
-            ].map((item) => (
-              <div key={item.title} className="bg-forge-900/30 border border-forge-700/50 rounded-xl p-6">
-                <div className="text-3xl mb-4">{item.icon}</div>
-                <h3 className="text-white font-bold mb-2">{item.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {PROCESS.map((p, i) => (
+              <div key={p.step} className="relative">
+                <div className="bg-forge-900/30 border border-forge-700/50 rounded-xl p-6 h-full">
+                  <div className="text-gold-400 font-mono text-xs mb-3">{String(i).padStart(2, '0')}</div>
+                  <h3 className="text-white font-bold mb-2">{p.step}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">{p.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -133,15 +205,19 @@ export default function LandingPage() {
       <div className="py-24 text-center">
         <div className="max-w-2xl mx-auto px-8">
           <h2 className="text-4xl font-black text-white mb-6">
-            Ready to Forge Your
+            Start with evidence,
             <br />
-            <span className="gold-gradient-text">Business Breakthrough?</span>
+            <span className="gold-gradient-text">not an estimate.</span>
           </h2>
+          <p className="text-slate-400 mb-10">
+            A Discovery doesn&apos;t commit you to a build. It tells you, with evidence, whether
+            the thing you&apos;re about to spend money on is the right thing to spend money on.
+          </p>
           <Link
-            href="/discover-lite"
+            href="/contact"
             className="inline-block bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all transform hover:scale-105 shadow-2xl shadow-gold-900/30"
           >
-            Begin Your Discovery Session →
+            Start a Discovery →
           </Link>
         </div>
       </div>
@@ -149,9 +225,21 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="border-t border-forge-800 py-8 text-center">
         <p className="text-slate-500 text-sm">
-          © {new Date().getFullYear()} InsightForge Discover™. All rights reserved.
+          © {new Date().getFullYear()} InsightForge™. All rights reserved.
+        </p>
+        <p className="text-slate-600 text-xs mt-2">
+          126 Campbell Road, Fourways, Johannesburg &middot; +27 71 770 0072
         </p>
       </footer>
+    </div>
+  )
+}
+
+function TrustStat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <div className="text-2xl md:text-3xl font-black text-white">{value}</div>
+      <div className="text-slate-400 text-xs mt-1">{label}</div>
     </div>
   )
 }
