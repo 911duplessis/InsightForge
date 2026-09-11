@@ -29,6 +29,7 @@ export default function AboutPage() {
         </Link>
         <div className="flex items-center gap-6">
           <Link href="/about" className="text-white text-sm font-medium">About</Link>
+          <Link href="/contact" className="text-slate-400 hover:text-white text-sm transition-colors">Contact</Link>
           <Link href="/command" className="text-slate-400 hover:text-white text-sm transition-colors">
             Consultant Login →
           </Link>
@@ -122,7 +123,7 @@ export default function AboutPage() {
             <span className="gold-gradient-text">We&apos;ll find a way, or make one.</span>
           </h2>
           <Link
-            href="/discover-lite"
+            href="/contact"
             className="inline-block bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all transform hover:scale-105 shadow-2xl shadow-gold-900/30"
           >
             Start a Discovery →

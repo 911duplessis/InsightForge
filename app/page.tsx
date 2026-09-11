@@ -52,6 +52,7 @@ export default function LandingPage() {
         </div>
         <div className="flex items-center gap-6">
           <Link href="/about" className="text-slate-400 hover:text-white text-sm transition-colors">About</Link>
+          <Link href="/contact" className="text-slate-400 hover:text-white text-sm transition-colors">Contact</Link>
           <Link href="/command" className="text-slate-400 hover:text-white text-sm transition-colors">
             Consultant Login →
           </Link>
@@ -79,7 +80,7 @@ export default function LandingPage() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
           <Link
-            href="/discover-lite"
+            href="/contact"
             className="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all transform hover:scale-105 shadow-2xl shadow-gold-900/30"
           >
             Start a Discovery →
@@ -203,7 +204,7 @@ export default function LandingPage() {
             the thing you&apos;re about to spend money on is the right thing to spend money on.
           </p>
           <Link
-            href="/discover-lite"
+            href="/contact"
             className="inline-block bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all transform hover:scale-105 shadow-2xl shadow-gold-900/30"
           >
             Start a Discovery →

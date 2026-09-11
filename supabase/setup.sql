@@ -515,5 +515,32 @@ drop policy if exists "service_role_all_rate_limit_hits" on rate_limit_hits;
 create policy "service_role_all_rate_limit_hits" on rate_limit_hits
   for all using ((select auth.role()) = 'service_role');
 
+-- ============================================================
+-- supabase/migrations/0008_leads.sql
+-- ============================================================
+-- Public contact/intake qualifying form (app/contact) — pre-tier, routes a
+-- visitor toward FORGE Lite or VDOS based on their answers.
+create table if not exists leads (
+  id uuid default uuid_generate_v4() primary key,
+  first_name text not null,
+  last_name text not null,
+  email text not null,
+  phone text,
+  industry text,
+  budget_range text,
+  urgency text,
+  problem_description text,
+  recommended_tier text check (recommended_tier in ('forge_lite', 'vdos')),
+  created_at timestamptz default now() not null
+);
+
+create index if not exists idx_leads_created_at on leads(created_at desc);
+
+alter table leads enable row level security;
+
+drop policy if exists "service_role_all_leads" on leads;
+create policy "service_role_all_leads" on leads
+  for all using ((select auth.role()) = 'service_role');
+
 -- Make PostgREST expose the new tables/columns immediately.
 notify pgrst, 'reload schema';
