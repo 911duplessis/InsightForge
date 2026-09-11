@@ -18,17 +18,22 @@ export const metadata: Metadata = {
   },
 }
 
-// Organization schema — legalName, address, and telephone are intentionally
-// omitted until InsightForge has a registered entity and a confirmed
-// number/address to publish. Adding placeholder values here would get
-// indexed by Google as real business data.
 const ORGANIZATION_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'InsightForge',
+  legalName: 'LMGI - The Distribution Company',
   description:
     'A South African-led network of vetted specialists delivering evidence-first business discovery, strategy, and execution.',
   areaServed: 'ZA',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '126 Campbell Road',
+    addressLocality: 'Fourways',
+    addressRegion: 'Gauteng',
+    addressCountry: 'ZA',
+  },
+  telephone: '+27 71 770 0072',
 }
 
 export default function RootLayout({

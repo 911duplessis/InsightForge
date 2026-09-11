@@ -157,6 +157,9 @@ export default function ProcessPage() {
         <p className="text-slate-500 text-sm">
           © {new Date().getFullYear()} InsightForge™. All rights reserved.
         </p>
+        <p className="text-slate-600 text-xs mt-2">
+          126 Campbell Road, Fourways, Johannesburg &middot; +27 71 770 0072
+        </p>
       </footer>
     </div>
   )
