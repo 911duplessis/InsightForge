@@ -1,4 +1,16 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'The FORGE Framework™ — How InsightForge Actually Works',
+  description:
+    'Discover, Forge, Build, Scale: the four-stage methodology behind every InsightForge engagement, from a single-pass FORGE Lite intake to a full 11-stage VDOS Discovery.',
+  openGraph: {
+    title: 'The FORGE Framework™',
+    description: 'Discover, Forge, Build, Scale — how an InsightForge engagement actually runs.',
+    type: 'website',
+  },
+}
 
 const STAGES = [
   {

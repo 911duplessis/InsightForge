@@ -1,4 +1,16 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About InsightForge™ — A Network of Specialists, Not a Single Team',
+  description:
+    'InsightForge is a South African-led network of vetted specialists in strategy, engineering, growth, and identity — coordinated around evidence-first business discovery, not a one-size pitch.',
+  openGraph: {
+    title: 'About InsightForge™',
+    description: 'A network of vetted specialists coordinated around evidence-first business discovery.',
+    type: 'website',
+  },
+}
 
 const NETWORK = [
   { role: 'Strategy & Discovery', desc: 'Business strategy, behavioural analysis, market and competitive intelligence' },
@@ -93,6 +105,27 @@ export default function AboutPage() {
                 <p className="text-slate-400 text-sm leading-relaxed">{n.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Founder */}
+      <div className="py-24">
+        <div className="max-w-3xl mx-auto px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-bold text-white mb-4">Led by someone building alongside you, not above you</h2>
+          </div>
+          <div className="bg-forge-900/40 border border-forge-700/50 rounded-2xl p-8">
+            <h3 className="text-white font-bold text-xl mb-1">Stiaan du Plessis</h3>
+            <p className="text-gold-300/80 text-xs uppercase tracking-wide font-semibold mb-4">Founder, InsightForge</p>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              Stiaan leads InsightForge and coordinates its network of specialists directly —
+              across the same real engagements referenced on this site: PrimeTurf&apos;s
+              post-migration SEO recovery, Ready & Rooted&apos;s venture pivot in New Zealand, and
+              the AME Bible School&apos;s digital learning platform, among others. The standards
+              on the Partners page aren&apos;t theoretical — they&apos;re the same ones this
+              network holds itself to on every one of those projects.
+            </p>
           </div>
         </div>
       </div>

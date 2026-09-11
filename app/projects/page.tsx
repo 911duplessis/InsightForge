@@ -1,4 +1,16 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Real Engagements — Findings Before Outcomes | InsightForge™',
+  description:
+    'Verified case studies from real InsightForge engagements — PrimeTurf\'s SEO recovery, Ready & Rooted\'s venture pivot, and the network of businesses run alongside them. No invented logos, no rounded-up numbers.',
+  openGraph: {
+    title: 'Real Engagements — Findings Before Outcomes',
+    description: 'Verified case studies, not portfolio filler.',
+    type: 'website',
+  },
+}
 
 const CASE_STUDIES = [
   {

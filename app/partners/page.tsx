@@ -1,4 +1,16 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Our Partner Network — Verified in Public | InsightForge™',
+  description:
+    'Every InsightForge partner is vetted against a public standard before they join: verified delivery, settled financial standing, a written agreement, and a tamper-evident public ledger record.',
+  openGraph: {
+    title: 'Our Partner Network — Verified in Public',
+    description: 'A partner network vetted against a public standard, not a paid listing.',
+    type: 'website',
+  },
+}
 
 const STANDARDS = [
   {
