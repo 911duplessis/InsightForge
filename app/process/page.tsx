@@ -48,6 +48,7 @@ export default function ProcessPage() {
         </Link>
         <div className="flex items-center gap-6">
           <Link href="/about" className="text-slate-400 hover:text-white text-sm transition-colors">About</Link>
+          <Link href="/team" className="text-slate-400 hover:text-white text-sm transition-colors">Team</Link>
           <Link href="/process" className="text-white text-sm font-medium">Process</Link>
           <Link href="/projects" className="text-slate-400 hover:text-white text-sm transition-colors">Projects</Link>
           <Link href="/partners" className="text-slate-400 hover:text-white text-sm transition-colors">Partners</Link>
