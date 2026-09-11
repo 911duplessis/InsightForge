@@ -1,5 +1,24 @@
 import Link from 'next/link'
 
+const STANDARDS = [
+  {
+    title: 'No listing until delivery is verified',
+    desc: 'A partner is added to the network after a real, completed engagement — not an application form or a fee. We check the work before we recommend the person.',
+  },
+  {
+    title: 'Financial standing settled before public standing',
+    desc: 'Outstanding payment disputes with existing clients get resolved before a partner is listed publicly. A partner network only means something if the businesses inside it actually pay each other.',
+  },
+  {
+    title: 'Every engagement gets a written agreement',
+    desc: 'Roles, scope, revenue split, and IP ownership are documented before work starts — not agreed informally and formalized later. This protects clients and partners equally.',
+  },
+  {
+    title: 'Standing is public, not just our word',
+    desc: 'A partner’s ledger record is checkable by anyone, at any time, with no login. If standing changes, the record changes with it — nothing is quietly edited after the fact.',
+  },
+]
+
 const CATEGORIES = [
   'Hosting & cloud infrastructure',
   'Cybersecurity & networking',
@@ -75,6 +94,27 @@ export default function PartnersPage() {
             real transaction closes through the network — disclosed, agreed in advance, and
             shared with whoever helped make the introduction happen.
           </p>
+        </div>
+      </div>
+
+      {/* Standards */}
+      <div className="py-24">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-bold text-white mb-4">The standard we hold before anyone joins</h2>
+            <p className="text-slate-400 max-w-xl mx-auto">
+              Being recommended by InsightForge means something specific — here&apos;s what has
+              to be true first.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {STANDARDS.map((s) => (
+              <div key={s.title} className="bg-forge-900/40 border border-forge-700/50 rounded-xl p-6">
+                <h3 className="text-white font-bold mb-2">{s.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
