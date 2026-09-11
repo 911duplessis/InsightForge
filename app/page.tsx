@@ -50,12 +50,12 @@ export default function LandingPage() {
           </div>
           <span className="text-white font-bold text-xl tracking-tight">InsightForge</span>
         </div>
-        <Link
-          href="/command"
-          className="text-slate-400 hover:text-white text-sm transition-colors"
-        >
-          Consultant Login →
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link href="/about" className="text-slate-400 hover:text-white text-sm transition-colors">About</Link>
+          <Link href="/command" className="text-slate-400 hover:text-white text-sm transition-colors">
+            Consultant Login →
+          </Link>
+        </div>
       </nav>
 
       {/* Hero */}
