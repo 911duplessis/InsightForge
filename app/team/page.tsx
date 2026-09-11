@@ -12,6 +12,36 @@ export const metadata: Metadata = {
   },
 }
 
+const STIAAN_EXPERTISE = [
+  'Strategic business architecture', 'Venture development', 'Business intelligence',
+  'Digital transformation', 'SEO & digital growth', 'Technology strategy',
+  'Capital allocation', 'Trading & risk frameworks', 'Behavioural performance',
+  'NLP', 'Timeline Therapy', 'Hypnotherapy', 'Executive & performance coaching',
+]
+
+const STIAAN_VENTURES = [
+  {
+    name: 'LMGI / TCN — The Connection Network',
+    desc: 'Originated as LMGI (Let Me Get It), built around connecting needs with the people capable of fulfilling them. Evolved into TCN: referral economics, vendor networks, digital identity, and a trust-record ledger — designed to make relationships themselves productive infrastructure, deliberately structured differently from a conventional MLM model.',
+  },
+  {
+    name: 'InsightForge',
+    desc: 'The strategic side of this work: turning fragmented business information into structured decisions via the VDOS (Discovery → Validation → Opportunity → Strategy) and Venture Blueprint methodologies referenced throughout this site.',
+  },
+  {
+    name: 'PrimeTurf',
+    desc: 'Go-to-market rebuild and post-migration SEO recovery — the case study detailed on the Projects page.',
+  },
+  {
+    name: 'Proteus Sports Group',
+    desc: 'One of the network projects referenced on the Projects page.',
+  },
+]
+
+const STIAAN_ACCOMPLISHMENTS = [
+  'South African pole-vault champion, competing at national level in athletics during the late 1990s and early 2000s, including Victor Ludorum recognition.',
+]
+
 const VINEET_SKILLS = [
   'React', 'Next.js', 'JavaScript / TypeScript', 'Node.js / backend development',
   'PostgreSQL', 'Supabase', 'REST / API integrations', 'Authentication & authorisation',
@@ -88,19 +118,52 @@ export default function TeamPage() {
           <div className="bg-forge-900/40 border border-forge-700/50 rounded-2xl p-8">
             <h2 className="text-white font-bold text-2xl mb-1">Stiaan du Plessis</h2>
             <p className="text-gold-300/80 text-xs uppercase tracking-wide font-semibold mb-6">
-              Founder & Strategic Director
+              Strategic Behavioral Architect & Capital Systems Strategist
+            </p>
+            <p className="text-slate-300 text-sm leading-relaxed mb-4">
+              Stiaan du Plessis works at the intersection of business, technology, human
+              behaviour, and capital. He specialises in connecting the dots between complex
+              problems, people, opportunities, and systems — transforming fragmented
+              information into clear strategy and executable business architecture.
             </p>
             <p className="text-slate-300 text-sm leading-relaxed mb-6">
-              Stiaan leads InsightForge and coordinates its network of specialists directly —
-              across the same real engagements referenced throughout this site: PrimeTurf&apos;s
-              post-migration SEO recovery, Ready & Rooted&apos;s venture pivot in New Zealand, and
-              the AME Bible School&apos;s digital learning platform, among others. His focus is
-              strategy, business development, and client relationships — coordinating the
-              network rather than working every discipline personally.
+              As the architect behind initiatives including LMGI / The Connection Network and
+              InsightForge, he combines strategic thinking with practical execution, working
+              alongside technical specialists and business partners to turn ideas into
+              functioning systems. His philosophy: structure before scale, data before
+              emotion, and preservation before growth. He doesn&apos;t simply ask what should
+              be built — he asks why it should exist, who it should serve, how it should
+              create value, and what system is required to make it work.
             </p>
-            <p className="text-slate-500 text-xs leading-relaxed">
-              Formal qualifications, certifications, and language proficiencies to be added.
-            </p>
+
+            <h3 className="text-white font-bold text-sm uppercase tracking-wide mb-3">Areas of Expertise</h3>
+            <div className="flex flex-wrap gap-2 mb-8">
+              {STIAAN_EXPERTISE.map((s) => (
+                <span key={s} className="bg-forge-800/60 border border-forge-700/50 rounded-full px-3 py-1.5 text-slate-300 text-xs">
+                  {s}
+                </span>
+              ))}
+            </div>
+
+            <h3 className="text-white font-bold text-sm uppercase tracking-wide mb-3">Ventures Architected</h3>
+            <div className="flex flex-col gap-4 mb-8">
+              {STIAAN_VENTURES.map((v) => (
+                <div key={v.name} className="border-l-2 border-gold-500/40 pl-4">
+                  <h4 className="text-white font-semibold text-sm mb-1">{v.name}</h4>
+                  <p className="text-slate-400 text-sm leading-relaxed">{v.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-white font-bold text-sm uppercase tracking-wide mb-3">Accomplishments</h3>
+            <ul className="flex flex-col gap-2">
+              {STIAAN_ACCOMPLISHMENTS.map((a) => (
+                <li key={a} className="flex items-start gap-3 text-slate-400 text-sm leading-relaxed">
+                  <span className="text-gold-400 mt-1">—</span>
+                  <span>{a}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
