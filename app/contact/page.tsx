@@ -70,6 +70,7 @@ export default function ContactPage() {
         </Link>
         <div className="flex items-center gap-6">
           <Link href="/about" className="text-slate-400 hover:text-white text-sm transition-colors">About</Link>
+          <Link href="/process" className="text-slate-400 hover:text-white text-sm transition-colors">Process</Link>
           <Link href="/contact" className="text-white text-sm font-medium">Contact</Link>
         </div>
       </nav>

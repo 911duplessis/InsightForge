@@ -29,6 +29,7 @@ export default function AboutPage() {
         </Link>
         <div className="flex items-center gap-6">
           <Link href="/about" className="text-white text-sm font-medium">About</Link>
+          <Link href="/process" className="text-slate-400 hover:text-white text-sm transition-colors">Process</Link>
           <Link href="/contact" className="text-slate-400 hover:text-white text-sm transition-colors">Contact</Link>
           <Link href="/command" className="text-slate-400 hover:text-white text-sm transition-colors">
             Consultant Login →
