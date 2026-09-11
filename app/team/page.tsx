@@ -22,6 +22,7 @@ const STIAAN_EXPERTISE = [
 const STIAAN_VENTURES = [
   {
     name: 'LMGI / TCN — The Connection Network',
+    url: 'https://connection-network.vercel.app',
     desc: 'Originated as LMGI (Let Me Get It), built around connecting needs with the people capable of fulfilling them. Evolved into TCN: referral economics, vendor networks, digital identity, and a trust-record ledger — designed to make relationships themselves productive infrastructure, deliberately structured differently from a conventional MLM model.',
   },
   {
@@ -30,6 +31,7 @@ const STIAAN_VENTURES = [
   },
   {
     name: 'PrimeTurf',
+    url: 'https://www.primeturf.co.za',
     desc: 'Go-to-market rebuild and post-migration SEO recovery — the case study detailed on the Projects page.',
   },
   {
@@ -53,6 +55,7 @@ const VINEET_SKILLS = [
 const VINEET_PORTFOLIO = [
   {
     name: 'TCN — The Connection Network',
+    url: 'https://connection-network.vercel.app',
     desc: 'Connector and vendor workflows, referral tracking, commission logic, authentication, admin functionality, and the platform\'s Trust Record — a hash-chained, publicly verifiable audit trail around referrals and transactions, on Supabase/PostgreSQL with Row Level Security.',
   },
   {
@@ -61,6 +64,7 @@ const VINEET_PORTFOLIO = [
   },
   {
     name: 'AME Bible College Portal',
+    url: 'https://amest.org',
     desc: 'Institutional administration and academic workflow platform — user roles, data management, and backend infrastructure for a working MVP, not just an informational site.',
   },
   {
@@ -149,7 +153,15 @@ export default function TeamPage() {
             <div className="flex flex-col gap-4 mb-8">
               {STIAAN_VENTURES.map((v) => (
                 <div key={v.name} className="border-l-2 border-gold-500/40 pl-4">
-                  <h4 className="text-white font-semibold text-sm mb-1">{v.name}</h4>
+                  <h4 className="text-white font-semibold text-sm mb-1">
+                    {v.url ? (
+                      <a href={v.url} target="_blank" rel="noopener noreferrer" className="hover:text-gold-300 transition-colors">
+                        {v.name} ↗
+                      </a>
+                    ) : (
+                      v.name
+                    )}
+                  </h4>
                   <p className="text-slate-400 text-sm leading-relaxed">{v.desc}</p>
                 </div>
               ))}
@@ -197,7 +209,15 @@ export default function TeamPage() {
             <div className="flex flex-col gap-4 mb-8">
               {VINEET_PORTFOLIO.map((p) => (
                 <div key={p.name} className="border-l-2 border-gold-500/40 pl-4">
-                  <h4 className="text-white font-semibold text-sm mb-1">{p.name}</h4>
+                  <h4 className="text-white font-semibold text-sm mb-1">
+                    {p.url ? (
+                      <a href={p.url} target="_blank" rel="noopener noreferrer" className="hover:text-gold-300 transition-colors">
+                        {p.name} ↗
+                      </a>
+                    ) : (
+                      p.name
+                    )}
+                  </h4>
                   <p className="text-slate-400 text-sm leading-relaxed">{p.desc}</p>
                 </div>
               ))}

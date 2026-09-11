@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 const CASE_STUDIES = [
   {
     name: 'PrimeTurf',
+    url: 'https://www.primeturf.co.za',
     tag: 'Gauteng & Cape Town · Artificial turf installer',
     stats: [
       { value: '1', label: 'organic keyword left, post-migration' },
@@ -114,7 +115,15 @@ export default function ProjectsPage() {
         <div className="max-w-4xl mx-auto px-8 flex flex-col gap-8">
           {CASE_STUDIES.map((c) => (
             <div key={c.name} className="bg-forge-900/40 border border-forge-700/50 rounded-2xl p-8">
-              <h2 className="text-2xl font-bold text-white mb-1">{c.name}</h2>
+              <h2 className="text-2xl font-bold text-white mb-1">
+                {c.url ? (
+                  <a href={c.url} target="_blank" rel="noopener noreferrer" className="hover:text-gold-300 transition-colors">
+                    {c.name} ↗
+                  </a>
+                ) : (
+                  c.name
+                )}
+              </h2>
               <p className="text-gold-300/80 text-xs uppercase tracking-wide font-semibold mb-6">{c.tag}</p>
               <div className="grid grid-cols-3 gap-4 mb-8 pb-8 border-b border-forge-700/50">
                 {c.stats.map((s) => (
