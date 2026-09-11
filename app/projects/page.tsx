@@ -16,6 +16,11 @@ const CASE_STUDIES = [
   {
     name: 'PrimeTurf',
     tag: 'Gauteng & Cape Town · Artificial turf installer',
+    stats: [
+      { value: '1', label: 'organic keyword left, post-migration' },
+      { value: '0', label: 'est. monthly organic visits' },
+      { value: '720/mo', label: 'search volume on the priority page identified' },
+    ],
     findings:
       'A GitHub Pages → Wix migration left the site with exactly one surviving organic keyword in the South African search index, an estimated 0 monthly organic visits, and its last real ranking pointed at a confirmed-404 page.',
     evidence:
@@ -28,6 +33,11 @@ const CASE_STUDIES = [
   {
     name: 'Ready & Rooted',
     tag: 'Canterbury, New Zealand · Early-years development',
+    stats: [
+      { value: '4', label: 'ventures scored before recommending one' },
+      { value: '3/10', label: 'defensibility score of the original idea' },
+      { value: '41/50', label: 'score of the venture the evidence actually supported' },
+    ],
     findings:
       'The founder’s original idea — an 8-week physical movement programme for ages 3-8 — scored lowest of four tested ventures on defensibility (3/10) and scalability (5/10): real unit economics, but a crowded, low-ceiling category.',
     evidence:
@@ -105,6 +115,14 @@ export default function ProjectsPage() {
             <div key={c.name} className="bg-forge-900/40 border border-forge-700/50 rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-white mb-1">{c.name}</h2>
               <p className="text-gold-300/80 text-xs uppercase tracking-wide font-semibold mb-6">{c.tag}</p>
+              <div className="grid grid-cols-3 gap-4 mb-8 pb-8 border-b border-forge-700/50">
+                {c.stats.map((s) => (
+                  <div key={s.label} className="text-center">
+                    <div className="text-xl md:text-2xl font-black gold-gradient-text">{s.value}</div>
+                    <div className="text-slate-500 text-xs mt-1 leading-snug">{s.label}</div>
+                  </div>
+                ))}
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <CaseField label="Findings" text={c.findings} />
                 <CaseField label="Evidence" text={c.evidence} />
