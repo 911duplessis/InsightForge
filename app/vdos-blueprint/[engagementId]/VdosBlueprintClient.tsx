@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import type { Stage11Output, VdosStageRecord } from '@/types/vdos'
 import { STAGE_SEQUENCE } from '@/types/vdos'
+import StageOutputView from '@/components/vdos/StageOutputView'
 
 interface VdosBlueprintClientProps {
   vosDesign: Stage11Output
@@ -120,9 +121,9 @@ export default function VdosBlueprintClient({ vosDesign, businessName, founderNa
                         {def.stageNumber}. {def.title}
                       </button>
                       {open && stage?.output && (
-                        <pre className="bg-slate-950 text-slate-300 text-[10px] p-4 overflow-x-auto max-h-72 rounded-b-xl">
-                          {JSON.stringify(stage.output, null, 2)}
-                        </pre>
+                        <div className="border-t border-slate-800 px-4 py-4">
+                          <StageOutputView output={stage.output} />
+                        </div>
                       )}
                     </div>
                   )
