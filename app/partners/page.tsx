@@ -14,20 +14,20 @@ export const metadata: Metadata = {
 
 const STANDARDS = [
   {
-    title: 'No listing until delivery is verified',
-    desc: 'A partner is added to the network after a real, completed engagement — not an application form or a fee. We check the work before we recommend the person.',
+    title: 'You never hire an unproven name',
+    desc: 'A partner only gets listed after a real, completed engagement — never off an application form or a fee. Their work gets checked before their name reaches you.',
   },
   {
-    title: 'Financial standing settled before public standing',
-    desc: 'Outstanding payment disputes with existing clients get resolved before a partner is listed publicly. A partner network only means something if the businesses inside it actually pay each other.',
+    title: 'You’re never referred to someone with unpaid disputes hanging over them',
+    desc: 'Outstanding payment disputes with existing clients get resolved before a partner is listed publicly. A referral only protects you if the business behind it actually pays people.',
   },
   {
-    title: 'Every engagement gets a written agreement',
-    desc: 'Roles, scope, revenue split, and IP ownership are documented before work starts — not agreed informally and formalized later. This protects clients and partners equally.',
+    title: 'Your engagement is never informal',
+    desc: 'Roles, scope, revenue split, and IP ownership are documented before work starts on anything you’re referred into — not agreed verbally and formalized later, after something’s already gone wrong.',
   },
   {
-    title: 'Standing is public, not just our word',
-    desc: 'A partner’s ledger record is checkable by anyone, at any time, with no login. If standing changes, the record changes with it — nothing is quietly edited after the fact.',
+    title: 'You can check standing yourself, any time',
+    desc: 'A partner’s ledger record is checkable by anyone, with no login, before you commit to them. If standing changes, the record changes with it — you’re never relying on our word alone.',
   },
 ]
 
@@ -79,14 +79,34 @@ export default function PartnersPage() {
         </p>
       </div>
 
+      {/* Standards — what this means for you, first */}
+      <div className="py-24">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-bold text-white mb-4">What being referred through InsightForge actually protects you from</h2>
+            <p className="text-slate-400 max-w-xl mx-auto">
+              Four things have to be true before anyone gets recommended to you.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {STANDARDS.map((s) => (
+              <div key={s.title} className="bg-forge-900/40 border border-forge-700/50 rounded-xl p-6">
+                <h3 className="text-white font-bold mb-2">{s.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Public ledger / review system */}
       <div className="border-y border-forge-800 bg-forge-950/40 py-20">
         <div className="max-w-3xl mx-auto px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">A review you don&apos;t have to take our word for</h2>
+          <h2 className="text-3xl font-bold text-white mb-6">You can verify all of this yourself — before you hire anyone</h2>
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
             Partner standing is recorded on a tamper-evident public ledger — hash-chained,
             append-only, and checkable by anyone with no login and no credentials required.
-            You don&apos;t trust our rating of a partner. You verify the chain yourself.
+            You don&apos;t have to trust our rating of a partner. You verify the chain yourself.
           </p>
           <p className="text-slate-400 leading-relaxed">
             This isn&apos;t a concept — it&apos;s the same architecture already running in
@@ -100,34 +120,12 @@ export default function PartnersPage() {
       {/* No fees, ever */}
       <div className="py-24">
         <div className="max-w-3xl mx-auto px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">No fees. Ever. Unless value actually changes hands.</h2>
+          <h2 className="text-3xl font-bold text-white mb-6">You never pay more because a referral was involved</h2>
           <p className="text-slate-300 leading-relaxed">
-            No listing fee to join the network, no fee to be recommended, no fee for a
-            client to find a partner through us. The only time anything is owed is when a
-            real transaction closes through the network — disclosed, agreed in advance, and
-            shared with whoever helped make the introduction happen.
+            No listing fee to join the network, no fee to be recommended, no fee for you to
+            find a partner through us. The only time anything is owed is when a real
+            transaction closes — disclosed, agreed in advance, and never added to your bill.
           </p>
-        </div>
-      </div>
-
-      {/* Standards */}
-      <div className="py-24">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-white mb-4">The standard we hold before anyone joins</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">
-              Being recommended by InsightForge means something specific — here&apos;s what has
-              to be true first.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {STANDARDS.map((s) => (
-              <div key={s.title} className="bg-forge-900/40 border border-forge-700/50 rounded-xl p-6">
-                <h3 className="text-white font-bold mb-2">{s.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 

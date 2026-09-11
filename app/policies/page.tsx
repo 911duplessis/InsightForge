@@ -32,24 +32,24 @@ const MILESTONES = [
 
 const POLICIES = [
   {
-    title: 'Milestones are tied to deliverables, not dates',
-    desc: 'A milestone is paid when the agreed thing exists and works — never just because a week or a month has passed. This protects the client from paying for time instead of progress, and protects the people doing the work from open-ended scope with no checkpoint.',
+    title: 'You never pay for time — only for progress',
+    desc: 'A milestone is paid when the agreed thing exists and works, never just because a week or a month has passed. You’re not billed for hours; you’re billed for something you can see and test.',
   },
   {
-    title: 'Payment structure is agreed in writing before work starts',
-    desc: 'Deposit percentage, milestone triggers, and total value are set out before the first hour of work — not negotiated informally partway through and formalized later. Every party knows what’s owed, and when, from day one.',
+    title: 'You know the full cost and schedule before anything starts',
+    desc: 'Deposit percentage, milestone triggers, and total value are set out in writing before the first hour of work — not negotiated informally partway through and formalized later. No mid-project surprises.',
   },
   {
-    title: 'Delays are communicated, not absorbed silently',
-    desc: 'If a payment is going to be late, the person owed it hears that directly and gets a real date — not silence, and not a promise repeated without ever landing. This has cost us before; it’s why it’s policy now.',
+    title: 'You’re never left chasing an update',
+    desc: 'If something’s going to run late, you hear it directly and get a real date — not silence, and not a promise repeated without ever landing. This has cost us before; it’s why it’s policy now.',
   },
   {
-    title: 'Referral commission: paid on closed value, not on the introduction alone',
-    desc: 'Where InsightForge or a network partner refers a paying client to another partner, the standard commission is 5% of the closed deal value — paid once the work is delivered and paid for, never before, and never as a finder’s fee for a lead that didn’t close.',
+    title: 'A referral never inflates what you pay',
+    desc: 'Where InsightForge or a network partner refers you to another partner, the standard commission is 5% of the closed deal value — paid by the parties who benefited from the introduction, once work is delivered, never added to your invoice as a finder’s fee.',
   },
   {
-    title: 'No fees to join the network, ever',
-    desc: 'Consistent with the Partners page: there is no cost to be listed, recommended, or referred work. The only money that ever changes hands is commission on a real, closed transaction.',
+    title: 'You never pay to access the network',
+    desc: 'Consistent with the Partners page: there is no cost to be listed, recommended, or referred work. The only money that ever changes hands is commission on a real, closed transaction — never a fee for the introduction itself.',
   },
 ]
 
@@ -85,8 +85,9 @@ export default function PoliciesPage() {
           <span className="gold-gradient-text">Same terms, every time.</span>
         </h1>
         <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
-          Deposits, milestones, and revenue share — the same structure for every client and
-          every partner, published here instead of buried in a contract appendix.
+          You&apos;ll know exactly what you owe, when, and why — before you sign anything.
+          Deposits, milestones, and revenue share, published here instead of buried in a
+          contract appendix.
         </p>
       </div>
 
@@ -94,7 +95,7 @@ export default function PoliciesPage() {
       <div className="border-y border-forge-800 bg-forge-950/40 py-20">
         <div className="max-w-5xl mx-auto px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-white mb-4">The standard milestone structure</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">What you pay, and when</h2>
             <p className="text-slate-400 max-w-xl mx-auto">
               30 / 30 / 40 — tied to what&apos;s actually delivered, adjusted per engagement
               scope but never abandoned.
@@ -116,9 +117,10 @@ export default function PoliciesPage() {
       <div className="py-24">
         <div className="max-w-4xl mx-auto px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-white mb-4">The policies behind the numbers</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">What this guarantees you</h2>
             <p className="text-slate-400 max-w-xl mx-auto">
-              Every one of these exists because of a real situation it was written to prevent.
+              Every one of these exists because of a real situation it was written to prevent
+              — for a client, not just for us.
             </p>
           </div>
           <div className="flex flex-col gap-6">
