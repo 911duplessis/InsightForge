@@ -111,7 +111,7 @@ export default function ProcessPage() {
       <div className="py-24">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-white mb-4">How we show up</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">What you can expect, every time</h2>
             <p className="text-slate-400 max-w-xl mx-auto">
               We&apos;ve been through enough to know these aren&apos;t just words on a page.
             </p>

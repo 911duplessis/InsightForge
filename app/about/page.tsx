@@ -93,10 +93,11 @@ export default function AboutPage() {
       <div className="py-24">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-white mb-4">One network, not one team pretending to be everything</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">One point of contact for you, not five agencies to manage yourself</h2>
             <p className="text-slate-400 max-w-2xl mx-auto">
               20+ years of combined experience, held by specialists across different countries —
-              coordinated around one objective, not stitched together after the sale.
+              coordinated around your engagement, so you&apos;re never the one stitching
+              subcontractors together after the sale.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -135,7 +136,7 @@ export default function AboutPage() {
       <div className="bg-forge-950/50 border-t border-forge-800 py-24">
         <div className="max-w-4xl mx-auto px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-white mb-4">Range, not a client-logo wall</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Whatever industry you&apos;re in, we&apos;ve likely already solved something adjacent</h2>
             <p className="text-slate-400 max-w-xl mx-auto">
               Real projects across real industries — proof of range, not a highlight reel.
             </p>
