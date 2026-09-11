@@ -103,6 +103,31 @@ export default function LandingPage() {
         </div>
       </div>
 
+      {/* Featured projects — client proof leads, ahead of internal methodology */}
+      <div className="py-24">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-white mb-4">Real clients. Real numbers.</h2>
+            <p className="text-slate-400 max-w-xl mx-auto">
+              Before anything about how we work — here&apos;s who we&apos;ve done it for.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {PROJECTS.map((p) => (
+              <div key={p.name} className="bg-forge-900/40 border border-forge-700/50 rounded-xl p-8">
+                <h3 className="text-white font-bold text-xl mb-3">{p.name}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link href="/projects" className="text-gold-400 hover:text-gold-300 text-sm font-medium transition-colors">
+              See all projects →
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Global capability */}
       <div className="py-24">
         <div className="max-w-7xl mx-auto px-8">
@@ -171,31 +196,6 @@ export default function LandingPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Featured projects */}
-      <div className="bg-forge-950/50 border-t border-forge-800 py-24">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-white mb-4">Proof, not portfolio filler</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">
-              Real, referenceable engagements run through this exact methodology.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {PROJECTS.map((p) => (
-              <div key={p.name} className="bg-forge-900/40 border border-forge-700/50 rounded-xl p-8">
-                <h3 className="text-white font-bold text-xl mb-3">{p.name}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{p.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link href="/projects" className="text-gold-400 hover:text-gold-300 text-sm font-medium transition-colors">
-              See all projects →
-            </Link>
           </div>
         </div>
       </div>
