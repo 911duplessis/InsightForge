@@ -53,6 +53,7 @@ export default function LandingPage() {
         <div className="flex items-center gap-6">
           <Link href="/about" className="text-slate-400 hover:text-white text-sm transition-colors">About</Link>
           <Link href="/process" className="text-slate-400 hover:text-white text-sm transition-colors">Process</Link>
+          <Link href="/projects" className="text-slate-400 hover:text-white text-sm transition-colors">Projects</Link>
           <Link href="/contact" className="text-slate-400 hover:text-white text-sm transition-colors">Contact</Link>
           <Link href="/command" className="text-slate-400 hover:text-white text-sm transition-colors">
             Consultant Login →
@@ -188,6 +189,11 @@ export default function LandingPage() {
                 <p className="text-slate-400 text-sm leading-relaxed">{p.desc}</p>
               </div>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link href="/projects" className="text-gold-400 hover:text-gold-300 text-sm font-medium transition-colors">
+              See all projects →
+            </Link>
           </div>
         </div>
       </div>
