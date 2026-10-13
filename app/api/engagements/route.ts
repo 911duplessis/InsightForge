@@ -122,7 +122,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error('Engagement creation error:', err)
     return NextResponse.json(
-      { success: false, error: err instanceof Error ? err.message : 'Internal server error' },
+      { success: false, error: "We couldn't start your discovery right now. Please try again in a few minutes." },
       { status: 500 }
     )
   }

@@ -174,7 +174,7 @@ export async function POST(req: NextRequest) {
     console.error('Session creation error:', err)
     const response: ApiResponse = {
       success: false,
-      error: err instanceof Error ? err.message : 'Internal server error',
+      error: "We couldn't generate your blueprint right now. Your answers were saved, so please try again in a few minutes.",
     }
     return NextResponse.json(response, { status: 500 })
   }

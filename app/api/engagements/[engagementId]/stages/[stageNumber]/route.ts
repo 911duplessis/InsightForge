@@ -35,7 +35,7 @@ export async function POST(
     }
     console.error('Stage run error:', err)
     return NextResponse.json(
-      { success: false, error: err instanceof Error ? err.message : 'Internal server error' },
+      { success: false, error: "We couldn't complete this stage right now. Please try again in a few minutes." },
       { status: 500 }
     )
   }
