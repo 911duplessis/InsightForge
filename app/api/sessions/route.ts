@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { runForgeAnalysis } from '@/lib/claude'
 import { checkRateLimit, clientIp } from '@/lib/rateLimit'
+import { notifySubmission } from '@/lib/notify'
 import type { DiscoveryFormData, ApiResponse, CreateSessionResponse } from '@/types'
 
 export async function POST(req: NextRequest) {
@@ -108,6 +109,13 @@ export async function POST(req: NextRequest) {
     if (answersError) {
       throw new Error(`Failed to save answers: ${answersError.message}`)
     }
+
+    // Email the full intake now, before the (slow, fallible) analysis step
+    await notifySubmission(
+      'FORGE Lite intake',
+      { session_id: sessionId, ...formData },
+      formData.contact.email
+    )
 
     // 4. Update session status to completed
     await supabaseAdmin
