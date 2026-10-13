@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { checkRateLimit, clientIp } from '@/lib/rateLimit'
+import { notifySubmission } from '@/lib/notify'
 
 interface ContactBody {
   first_name: string
@@ -55,6 +56,8 @@ export async function POST(req: NextRequest) {
   if (error) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 })
   }
+
+  await notifySubmission('contact lead', { ...body, recommended_tier }, email)
 
   return NextResponse.json({ success: true, recommended_tier })
 }

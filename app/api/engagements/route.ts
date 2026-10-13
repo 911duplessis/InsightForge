@@ -4,6 +4,7 @@ import { STAGE_SEQUENCE, ASQ_KEYS } from '@/types/vdos'
 import type { BusinessAgnosticIntake } from '@/types/vdos'
 import { runStage } from '@/lib/vdos/engine'
 import { checkRateLimit, clientIp } from '@/lib/rateLimit'
+import { notifySubmission, type NotifyValue } from '@/lib/notify'
 
 interface CreateEngagementBody {
   business_id: string
@@ -107,6 +108,12 @@ export async function POST(req: NextRequest) {
     }))
     const { error: asqError } = await supabaseAdmin.from('asq_instruments').insert(asqRows)
     if (asqError) throw new Error(`Failed to create ASQ rows: ${asqError.message}`)
+
+    await notifySubmission(
+      'VDOS intake',
+      { engagement_id: engagement.id, business_id, ...(intake as unknown as Record<string, NotifyValue>) },
+      intake.contact.email
+    )
 
     // Kick off Stage 0 immediately
     await runStage(engagement.id, 0)
